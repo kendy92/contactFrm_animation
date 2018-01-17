@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900');
+html {
+  box-sizing: border-box;
+}
+* {
+  position: relative;
+  outline: none;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  background: #93b7be;
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  height: 500px;
+}
+h1 {
+  top: 0;
+  opacity: 1;
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #a799b7;
+  margin-bottom: 32px;
+  -webkit-transition: all 0.3s 1s ease;
+  -moz-transition: all 0.3s 1s ease;
+  -o-transition: all 0.3s 1s ease;
+  -ms-transition: all 0.3s 1s ease;
+  transition: all 0.3s 1s ease;
+}
+.container {
+  position: relative;
+  margin: auto auto;
+}
+.container .tool-tip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 5em;
+  width: 0;
+  height: 0;
+  text-align: center;
+  background-color: #fff;
+  padding: .5em;
+  z-index: 555;
+  border: 2px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.container .err-msg {
+  display: none;
+  background-color: #ac0c18;
+  color: #fff;
+  text-align: center;
+  padding: .5em;
+  width: auto;
+  font-weight: bold;
+  margin-top: .2em;
+}
+.form {
+  width: 64px;
+  height: 64px;
+  background: #2d3047;
+  border: 6px solid #a799b7;
+  -webkit-box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  overflow: hidden;
+}
+.form * {
+  top: -12px;
+  opacity: 0;
+}
+.form::before,
+.form::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  opacity: 1;
+  left: 10px;
+  z-index: 100;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  -ms-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  -webkit-transform: scale(0.9999, 0.9999);
+  -moz-transform: scale(0.9999, 0.9999);
+  -o-transform: scale(0.9999, 0.9999);
+  -ms-transform: scale(0.9999, 0.9999);
+  transform: scale(0.9999, 0.9999);
+}
+.form::before {
+  top: 15px;
+  -webkit-transform: perspective(1000px) rotateX(0deg);
+  -moz-transform: perspective(1000px) rotateX(0deg);
+  -o-transform: perspective(1000px) rotateX(0deg);
+  -ms-transform: perspective(1000px) rotateX(0deg);
+  transform: perspective(1000px) rotateX(0deg);
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  -o-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  border-top: 11px solid #fff;
+  border-right: 16px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 16px solid transparent;
+}
+.form::after {
+  top: 17px;
+  border-top: 11px solid transparent;
+  border-right: 16px solid #fff;
+  border-bottom: 11px solid #fff;
+  border-left: 16px solid #fff;
+}
+.form:hover::before {
+  -webkit-transform: perspective(1000px) rotateX(180deg);
+  -moz-transform: perspective(1000px) rotateX(180deg);
+  -o-transform: perspective(1000px) rotateX(180deg);
+  -ms-transform: perspective(1000px) rotateX(180deg);
+  transform: perspective(1000px) rotateX(180deg);
+  -webkit-transform-origin: 50% 0;
+  -moz-transform-origin: 50% 0;
+  -o-transform-origin: 50% 0;
+  -ms-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+}
+.form.active {
+  padding: 24px;
+  background: #2d3047;
+  border: 6px solid #a799b7;
+  -webkit-box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 30px 20px -20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 320px;
+  height: auto;
+  -webkit-animation: openForm 1.4s;
+  -moz-animation: openForm 1.4s;
+  -o-animation: openForm 1.4s;
+  -ms-animation: openForm 1.4s;
+  animation: openForm 1.4s;
+  -webkit-animation-timing-function: cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -moz-animation-timing-function: cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -o-animation-timing-function: cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -ms-animation-timing-function: cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  animation-timing-function: cubic-bezier(0.9, 0.1, 0.1, 0.9);
+}
+.form.active * {
+  top: 0;
+  opacity: 1;
+}
+.form.active::after,
+.form.active::before {
+  opacity: 0;
+}
+.form label {
+  position: absolute;
+  left: -9999px;
+}
+.form #btn_submit {
+  top: 0;
+  opacity: 1;
+  width: 160px;
+  padding: 8px;
+  text-align: center;
+  margin: 24px auto 0 auto;
+  background: #93b7be;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  color: #2d3047;
+  -webkit-box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.3), 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 0px 0px rgba(0, 0, 0, 0.5) inset;
+  -moz-box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.3), 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 0px 0px rgba(0, 0, 0, 0.5) inset;
+  -o-box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.3), 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 0px 0px rgba(0, 0, 0, 0.5) inset;
+  -ms-box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.3), 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 0px 0px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0px 6px 10px -4px rgba(0, 0, 0, 0.3), 0px 1px 0px rgba(255, 255, 255, 0.5) inset, 0px 0px 0px rgba(0, 0, 0, 0.5) inset;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.form #btn_submit:hover {
+  background-color: #6397a1;
+}
+.form input,
+.form textarea {
+  top: 0;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #fefefe;
+  margin: 12px 0 0 0;
+  font-style: italic;
+  border: none;
+}
+.form input {
+  top: 0;
+}
+.form input {
+  -webkit-transition: all 0.5s 1s ease;
+  -moz-transition: all 0.5s 1s ease;
+  -o-transition: all 0.5s 1s ease;
+  -ms-transition: all 0.5s 1s ease;
+  transition: all 0.5s 1s ease;
+}
+.form textarea {
+  top: 0;
+  opacity: 1;
+  max-height: 100px;
+  -webkit-transition: all 0.9s 1s ease;
+  -moz-transition: all 0.9s 1s ease;
+  -o-transition: all 0.9s 1s ease;
+  -ms-transition: all 0.9s 1s ease;
+  transition: all 0.9s 1s ease;
+}
+.confirm_msg {
+  width: 64px;
+  height: 64px;
+  background: #2d3047;
+  z-index: 100;
+  -webkit-transform: scale(0, 0) rotate(-90deg);
+  -moz-transform: scale(0, 0) rotate(-90deg);
+  -o-transform: scale(0, 0) rotate(-90deg);
+  -ms-transform: scale(0, 0) rotate(-90deg);
+  transform: scale(0, 0) rotate(-90deg);
+  -webkit-transition: all 0.5s 0.3s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -moz-transition: all 0.5s 0.3s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -o-transition: all 0.5s 0.3s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  -ms-transition: all 0.5s 0.3s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  transition: all 0.5s 0.3s cubic-bezier(0.9, 0.1, 0.1, 0.9);
+  line-height: 64px;
+  text-align: center;
+  cursor: pointer;
+}
+.confirm_msg span {
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: #a799b7;
+  opacity: 0;
+  font-weight: 700;
+  -webkit-transform: scale(0.2, 0.2);
+  -moz-transform: scale(0.2, 0.2);
+  -o-transform: scale(0.2, 0.2);
+  -ms-transform: scale(0.2, 0.2);
+  transform: scale(0.2, 0.2);
+  -webkit-transition: all 0.6s 0.4s ease;
+  -moz-transition: all 0.6s 0.4s ease;
+  -o-transition: all 0.6s 0.4s ease;
+  -ms-transition: all 0.6s 0.4s ease;
+  transition: all 0.6s 0.4s ease;
+}
+.confirm_msg.active {
+  width: 100%;
+  -webkit-transform: scale(1, 1) rotate(0deg);
+  -moz-transform: scale(1, 1) rotate(0deg);
+  -o-transform: scale(1, 1) rotate(0deg);
+  -ms-transform: scale(1, 1) rotate(0deg);
+  transform: scale(1, 1) rotate(0deg);
+  padding: 0 1em;
+}
+.confirm_msg.active span {
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  transform: scale(1, 1);
+  left: 0px;
+}
+@keyframes openForm {
+  0% {
+    width: 64px;
+    height: 64px;
+  }
+  50% {
+    width: 320px;
+    height: 64px;
+  }
+  100% {
+    width: 320px;
+    height: 380px;
+  }
+}
